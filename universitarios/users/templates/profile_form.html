@@ -1,0 +1,188 @@
+
+
+<!-- Bootstrap 4 -->
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <!-- Font Awesome -->
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+  <!-- Moment.js -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment-with-locales.min.js"></script>
+
+  <!-- Tempus Dominus Bootstrap 4 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.1.2/css/tempusdominus-bootstrap-4.min.css" integrity="sha256-XPTBwC3SBoWHSmKasAk01c08M6sIA5gF5+sRxqak2Qs=" crossorigin="anonymous" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.1.2/js/tempusdominus-bootstrap-4.min.js" integrity="sha256-z0oKYg6xiLq3yJGsp/LsY9XykbweQlHl42jHv2XTBz4=" crossorigin="anonymous"></script>
+
+<form action="" method="POST" class="form-horizontal" enctype="multipart/form-data">{% csrf_token %}
+  <div class="row h-90">
+    <div class="col-md-12 my-auto">
+        <div class="card card-block col-xs-12 col-md-6 box p-3 mx-auto">
+              <div class="container">
+                  <h1><strong>Sube tus datos de perfil</strong>
+                      <br></br>
+                      <small>avatar</small>
+                  </h1>
+                  <div class="avatar-upload">
+                      <div class="avatar-edit">
+                         {{ form.avatar }}
+                          <label for="imageUpload"></label>
+                      </div>
+                      <div class="avatar-preview">
+                          <div id="imagePreview" style="background-image: url(http://i.pravatar.cc/500?img=7);">
+                          </div>
+                      </div>
+                  </div>
+              </div>        
+
+            <div class="form-group">
+                <label class="control-label col-xs-1" for="name">{{ form.rut.label }}:</label>
+                <div class="col-xs-9">
+                    {{ form.rut }}
+            </div>
+
+            </div>
+            <div class="form-group">
+                <label class="control-label col-xs-1" for="name">{{ form.phone.label }}:</label>
+                <div class="col-xs-9">
+                    {{ form.phone }}
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
+                  {{ form.birth_date }}
+                  <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
+                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                  </div>
+                </div>
+            </div>
+            <input class="btn btn-primary col-xs-offset-1 col-xs-9" type="submit" value="Crear" />
+            {% if form.errors %}
+            <!-- Error messaging -->
+            <div id="errors">
+              <div class="inner">
+                <p>Existen errores en la información. Por favor corrige lo siguiente:</p>
+                {{ form.non_field_errors }}
+                <ul>
+                  {% for field in form %}
+                    {% if field.errors %}<li>{{ field.label }}: {{ field.errors|striptags }}</li>{% endif %}
+                  {% endfor %}
+                </ul>
+              </div>
+            </div>
+            <!-- /Error messaging -->
+          {% endif %}
+        </div>
+    </div>
+  </div>
+</form>
+<style>
+    body {
+      background: whitesmoke;
+      font-family: 'Open Sans', sans-serif;
+    }
+    .container {
+      max-width: 960px;
+      margin: 30px auto;
+      padding: 20px;
+    }
+    h1 {
+      font-size: 20px;
+      text-align: center;
+      margin: 20px 0 20px;
+    }
+    h1 small {
+      display: block;
+      font-size: 15px;
+      padding-top: 8px;
+      color: gray;
+    }
+    .avatar-upload {
+      position: relative;
+      max-width: 205px;
+      margin: 50px auto;
+    }
+    .avatar-upload .avatar-edit {
+      position: absolute;
+      right: 12px;
+      z-index: 1;
+      top: 10px;
+    }
+    .avatar-upload .avatar-edit input {
+      display: none;
+    }
+    .avatar-upload .avatar-edit input + label {
+      display: inline-block;
+      width: 34px;
+      height: 34px;
+      margin-bottom: 0;
+      border-radius: 100%;
+      background: #FFFFFF;
+      border: 1px solid transparent;
+      box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
+      cursor: pointer;
+      font-weight: normal;
+      transition: all 0.2s ease-in-out;
+    }
+    .avatar-upload .avatar-edit input + label:hover {
+      background: #f1f1f1;
+      border-color: #d6d6d6;
+    }
+    .avatar-upload .avatar-edit input + label:after {
+      content: "\f040";
+      font-family: 'FontAwesome';
+      color: #757575;
+      position: absolute;
+      top: 10px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      margin: auto;
+    }
+    .avatar-upload .avatar-preview {
+      width: 192px;
+      height: 192px;
+      position: relative;
+      border-radius: 100%;
+      border: 6px solid #F8F8F8;
+      box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+    }
+    .avatar-upload .avatar-preview > div {
+      width: 100%;
+      height: 100%;
+      border-radius: 100%;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+</style>
+<script>
+  $(function () {
+    $("#datetimepicker1").datetimepicker({
+      locale: 'es',
+      format: 'DD/MM/YYYY',
+    });
+  });
+</script>
+<script>
+  function readURL(input) {
+      if (input.files && input.files[0]) {
+          var reader = new FileReader();
+          reader.onload = function(e) {
+              $('#imagePreview').css('background-image', 'url('+e.target.result +')');
+              $('#imagePreview').hide();
+              $('#imagePreview').fadeIn(650);
+          }
+          reader.readAsDataURL(input.files[0]);
+      }
+  }
+  $("#imageUpload").change(function() {
+      readURL(this);
+  });
+</script>
+  

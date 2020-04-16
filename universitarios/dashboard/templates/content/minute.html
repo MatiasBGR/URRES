@@ -1,0 +1,22 @@
+{% block minute_block %}
+<div>
+    {% autoescape off %}
+    <div class="new-content">
+        <h2>{{ minute.location }}</h2>
+        <h5>{{ minute.date }}</h5>
+        <h3>Contenido del acta:</h3> {{ minute.content|linebreaks }}
+    </div>
+    <div>
+        <ul>
+            {% for isue in minute.isue_set.all %}
+            <li>
+                <a class="click" href="#" data-catid="get_isue|{{isue.id}}" id="isue{{isue.id}}">                                        
+                    {{ isue.title }}
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endautoescape %}
+</div>
+{% endblock minute_block %}

@@ -1,0 +1,650 @@
+ {% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>UNIVERSITARIOS - URRES</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600" />
+    <!-- https://fonts.google.com/specimen/Open+Sans -->
+    <link rel="stylesheet" href={% static "/css/all.min.css" %} />
+    <!-- https://fontawesome.com/ -->
+    <link rel="stylesheet" href={% static "/css/bootstrap.min.css" %} />
+    <!-- https://getbootstrap.com/ -->
+    <link rel="stylesheet" href={% static "/css/tooplate-style.css" %} />
+
+</head>
+
+<body>
+    <!-- page header -->
+    <div class="container" id="home">
+        <div class="col-12 text-center">
+            <div class="tm-page-header">
+                <i class="fas fa-4x fa-football-ball mr-4"></i>
+                <h1 class="d-inline-block text-uppercase">UNIVERSITARIOS</h1>
+            </div>
+        </div>
+    </div>
+    <!-- navbar -->
+    <div class="tm-nav-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="navbar navbar-expand-md navbar-light">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#tmMainNav" aria-controls="tmMainNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+
+                        <div class="collapse navbar-collapse" id="tmMainNav">
+                            <ul class="navbar-nav mx-auto tm-navbar-nav">
+                                <li class="nav-item">
+                                    <a class="nav-link external" href="" data-toggle="modal" data-target="#login-modal">MiPortal</a>
+                                </li>
+                                </li>
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="#home">Home <span class="sr-only">(current)</span></a
+                    >
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#features">Socios</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#activities">Actividades</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#company">Club</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#contact">Contacto</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link external" href="https://www.facebook.com/templatemo">Facebook</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link external" href="https://www.instagram.com">Instagram</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Video Banner -->
+    <section class="tm-banner-section" id="tmVideoSection">
+        <div class="container tm-banner-text-container">
+            <div class="row">
+                <div class="col-12">
+                    <header>
+                        <h2 class="tm-banner-title">Club Universitarios</h2>
+                        <p class="mx-auto tm-banner-subtitle">
+                            Ohana significa famila y una wea tierna o motivante
+                        </p>
+                    </header>
+                </div>
+            </div>
+        </div>
+
+        <!-- Video -->
+        <video id="hero-vid" autoplay="" muted>
+        <source src={% static "/videos/rugby.mp4" %} type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </section>
+    <!-- Features -->
+    <div class="container tm-features-section" id="features">
+        <div class="row tm-features-row">
+            <section class="col-md-6 col-sm-12 tm-feature-block">
+                <header class="tm-feature-header">
+                    <i class="fas fa-5x fa-sign-in-alt tm-feature-icon"></i>
+                    <h3 class="tm-feature-h">¿Ya eres socio?</h3>
+                </header>
+                <p>
+                    Ingresa a tu sitio de socio en el siguiente link
+                    <a rel="nofollow noopener" href="https://www.tooplate.com">Mi Panel</a
+            >. Aca podras pagar tus cuotas, revisar tu información de jugador, 
+            acceder a material de entrenamiento y mucho mas.
+          </p>
+          <p>
+            Sed interdum, purus vulputate congue luctus, lorem massa dignissim
+            nisi, sed condimentum nibh lorem quis lorem. Nulla sed erat
+            dignissim, tincidunt ante ac, egestas turpis.
+          </p>
+        </section>
+        <section class="col-md-6 col-sm-12 tm-feature-block">
+          <header class="tm-feature-header">
+            <i class="fas fa-5x  fa-file-signature tm-feature-icon"></i>
+            <h3 class="tm-feature-h">¿Quieres ser parte de nuestra familia?</h3>
+          </header>
+          <p>
+            unetete a nuestro club, de valores y blah blah , nec viverra quam nisl at velit. Pellentesque
+            iaculis convallis egestas.
+          </p>
+          <p>
+            Nunc ut elit eget velit mollis sodales. Ut non mauris ut ligula
+            mattis consectetur. Aenean augue arcu, rhoncus at nibh nec, lacinia
+            blandit nulla.
+          </p>
+        </section>
+      </div>
+    </div>
+
+    <!-- Activities -->
+    <div class="container" id="activities">
+      <div class="row">
+        <div class="col-12">
+          <div class="tm-parallax">
+            <header class="tm-parallax-header">
+              <h2 class="">Actividades</h2>
+            </header>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="tm-activity-block">
+            <div class="tm-activity-img-container">
+              <img src={% static "/img/img-01.jpg" %} alt="Image" height="180" width="180"class="tm-activity-img" />
+            </div>
+            <div class="tm-activity-block-text">
+              <h3 class="tm-text-blue">Entrenamientos</h3>
+              <p>
+               Aca entrenando con los cabros montes,
+                nascetur ridiculus mus. Sed eu turpis nec sem lacinia
+                condimentum et a orci.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="tm-activity-block mr-lg-0 ml-lg-auto">
+            <div class="tm-activity-img-container">
+              <img src={% static "/img/img-02.jpg" %} alt="Image" height="180" width="180" class="tm-activity-img" />
+            </div>
+            <div class="tm-activity-block-text">
+              <h3 class="tm-text-blue">Nuestros colores</h3>
+              <p>
+                Aca la camiseta y too  magnis dis parturient montes,
+                nascetur ridiculus mus. Sed eu turpis nec sem lacinia
+                condimentum et a orci.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="tm-activity-block">
+            <div class="tm-activity-img-container">
+              <img src={% static "/img/img-03.jpg" %} alt="Image"height="180" width="180" class="tm-activity-img" />
+            </div>
+            <div class="tm-activity-block-text">
+              <h3 class="tm-text-blue">Donde entrenamos</h3>
+              <p>
+                Orci varius natoque penatibus et magnis dis parturient montes,
+                nascetur ridiculus mus. Sed eu turpis nec sem lacinia
+                condimentum et a orci.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="tm-activity-block mr-lg-0 ml-lg-auto">
+            <div class="tm-activity-img-container">
+              <img src={% static "/img/img-04.jpg" %} alt="Image"height="180" width="180" class="tm-activity-img" />
+            </div>
+            <div class="tm-activity-block-text">
+              <h3 class="tm-text-blue">No se me ocurre que wea poner</h3>
+              <p>
+                Orci varius natoque penatibus et magnis dis parturient montes,
+                nascetur ridiculus mus. Sed eu turpis nec sem lacinia
+                condimentum et a orci.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="container tm-company-section" id="company">
+      <div class="row">
+        <div class="col-xl-9 col-lg-8 col-md-12 tm-company-left">
+          <div class="tm-company-about">
+            <div class="tm-company-img-container">
+              <img src={% static "/img/img-05.jpg" %} alt="Image" />
+            </div>
+            <div class="tm-company-about-text">
+              <header>
+                <h2 class="tm-company-about-header">Nuestro Club</h2>
+              </header>
+              <p>
+                Phasellus fringilla convallis libero non aliquam. Morbi justo
+                lorem, varius ultricies pulvinar ac, aliquet quis ipsum.
+              </p>
+              <p class="mb-4">
+                Suspendisse aliquam pulvinar odio sed rhoncus. Cras pretium diam
+                ut metus tristique, a ultricies sapien euismod. Duis dui diam,
+                maximus ac ligula a, accumsan cursus ante.
+              </p>
+              <a href="#" class="btn tm-btn tm-float-right">Read More</a>
+        </div>
+    </div>
+    </div>
+    <div class="col-xl-9 col-lg-4 col-md-12 tm-company-right  ml-lg-auto mr-lg-0">
+        <div class="tm-company-right-inner">
+            <ul class="nav nav-tabs" id="tmCompanyTab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link tm-nav-link-border-right active" id="vision-tab" data-toggle="tab" href="#vision" role="tab" aria-controls="vision" aria-selected="true">Vision</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link tm-no-border-right"
+                  id="mission-tab"
+                  data-toggle="tab"
+                  href="#mission"
+                  role="tab"
+                  aria-controls="mission"
+                  aria-selected="false"
+                  >Mission</a
+                >
+              </li>
+            </ul>
+            <div class="tab-content" id="tmTabContent">
+              <div
+                class="tab-pane fade show active"
+                id="vision"
+                role="tabpanel"
+                aria-labelledby="vision-tab"
+              >
+                <p>
+                  Phasellus suscipit sapien magna, vel dictum lorem fringilla.
+                </p>
+                <p>
+                  Class aptent taciti sociosqu ad litora torquent per conubia
+                  nostra.
+                </p>
+                <p>
+                  Nulla ornare ligula nibh, sit amet tristique magna efficitur
+                  eu.
+                </p>
+              </div>
+              <div
+                class="tab-pane fade"
+                id="mission"
+                role="tabpanel"
+                aria-labelledby="mission-tab"
+              >
+                <p>
+                  Class aptent taciti sociosqu ad litora torquent per conubia
+                  nostra.
+                </p>
+                <p>
+                  Nulla ornare ligula nibh, sit amet tristique magna efficitur
+                  eu.
+                </p>
+                <p>
+                  Phasellus suscipit sapien magna, vel dictum lorem fringilla.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Contact -->
+    <section class="container tm-contact-section" id="contact">
+      <div class="row">
+        <div class="col-xl-5 col-lg-6 col-md-12 tm-contact-left">
+          <div class="tm-contact-form-container ml-auto mr-0">
+            <header>
+              <h2 class="tm-contact-header">Contactanos</h2>
+            </header>
+            <form action="index.html" class="tm-contact-form" method="POST">
+              <div class="form-group">
+                <input
+                  type="text"
+                  id="contact_name"
+                  name="contact_name"
+                  class="form-control"
+                  placeholder="Nombre"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <input
+                  type="email"
+                  id="contact_email"
+                  name="contact_email"
+                  class="form-control"
+                  placeholder="Email"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <textarea
+                  rows="5"
+                  id="contact_message"
+                  name="contact_message"
+                  class="form-control"
+                  placeholder="Mensage"
+                  required
+                ></textarea>
+              </div>
+              <div class="tm-text-right">
+                <button type="submit" class="btn tm-btn tm-btn-big">
+                  Enviar
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="col-xl-7 col-lg-6 col-md-12 tm-contact-right">
+          <div class="tm-contact-figure-block">
+            <figure class="d-inline-block">
+              <img src={% static "/img/img-06.jpg" %} alt="Image" class="img-fluid" />
+              <figcaption class="tm-contact-figcaption">
+                Nulla arcu tortor, mattis in diam eget, hendrerit vulputate
+                ligula. Nam non purus consequat, dictum lectus lobortis, laoreet
+                nibh. Cras vitae facilisis felis. Phasellus tristique.
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+        <!-- Trigger the modal with a button -->
+        <!-- Trigger the modal with a button -->
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#login-modal">
+          Launch demo modal
+        </button>
+
+        </section>
+ 
+    <footer class="container tm-footer">
+      <div class="row tm-footer-row">
+        <p class="col-md-10 col-sm-12 mb-0">
+          Copyright &copy; 2018 Company Name - Design:
+          <a rel="nofollow" href="https://www.facebook.com/tooplate" class="tm-footer-link">Tooplate</a>
+                    </p>
+                    <div class="col-md-2 col-sm-12 scrolltop">
+                        <div class="scroll icon"><i class="fa fa-4x fa-angle-up"></i></div>
+                    </div>
+        </div>
+        </footer>
+        <!-- Modal -->
+        <!--  Login Form Modal -->
+        <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" style="z-index: 9000">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-
+              hidden="true">Close</span></button>
+                        <h4 class="modal-title text-center" id="loginModelLabel">Login</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-8 col-md-offset-2">
+                                <p id="loginerror"></p>
+                                <form class="login-form" id="loginform">{% csrf_token %}
+                                    <div class="form-group">
+                                        <input type="name" name="username" id="login-username" class="form-control" placeholder="Usuario" required="required" maxlength="10" size="10" />
+                                        <label id="no-pno-label" class="control-label" for="login-username" style="display:none;">Por favor ingresa tu usuario.</label>
+                                    </div>
+                                    <p class="text-danger text-center" id="no-user-error" style="display:none;">We no pudimos encontrarte! Por favor habla con la directiva para que te registren</p>
+                                    <div class="form-group">
+                                        <input type="password" name="password" id="login-password" class="form-control" placeholder="Contraseña" required="required" />
+                                    </div>
+                                    <p class="text-danger text-center" id="password-error" style="display:none;">Contraseña incorrecta!
+                                    </p>
+                                    <div class="form-group text-center">
+                                        <input type="submit" value="Login" class="btn  btn-lg btn-block btn-cakemporos" id="signUp-Submit">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <hr/>
+                        <div class="row">
+                            <div class="col-md-8 col-md-offset-2 text-center">
+                                <a href="#" onclick="openForgotPassword()"><b>Olvide la contraseña</b></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src={% static "/js/jquery-1.9.1.min.js" %}></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <!-- Single Page Nav plugin works with this version of jQuery -->
+        <script src={% static "/js/jquery.singlePageNav.min.js" %}></script>
+        <script src={% static "/js/jquery.singlePageNav.min.js" %}></script>
+        <script>
+            /**
+             * detect IE
+             * returns version of IE or false, if browser is not Internet Explorer
+             */
+            function detectIE() {
+                var ua = window.navigator.userAgent;
+
+                var msie = ua.indexOf("MSIE ");
+                if (msie > 0) {
+                    // IE 10 or older => return version number
+                    return parseInt(ua.substring(msie + 5, ua.indexOf(".", msie)), 10);
+                }
+
+                var trident = ua.indexOf("Trident/");
+                if (trident > 0) {
+                    // IE 11 => return version number
+                    var rv = ua.indexOf("rv:");
+                    return parseInt(ua.substring(rv + 3, ua.indexOf(".", rv)), 10);
+                }
+
+                // var edge = ua.indexOf('Edge/');
+                // if (edge > 0) {
+                //     // Edge (IE 12+) => return version number
+                //     return parseInt(ua.substring(edge + 5, ua.indexOf('.', edge)), 10);
+                // }
+
+                // other browser
+                return false;
+            }
+
+            function setVideoHeight() {
+                const videoRatio = 1920 / 1080;
+                const minVideoWidth = 400 * videoRatio;
+                let secWidth = 0,
+                    secHeight = 0;
+
+                secWidth = videoSec.width();
+                secHeight = videoSec.height();
+
+                secHeight = secWidth / 2.13;
+
+                if (secHeight > 600) {
+                    secHeight = 600;
+                } else if (secHeight < 400) {
+                    secHeight = 400;
+                }
+
+                if (secWidth > minVideoWidth) {
+                    $("video").width(secWidth);
+                } else {
+                    $("video").width(minVideoWidth);
+                }
+
+                videoSec.height(secHeight);
+            }
+
+            // Parallax function
+            // https://codepen.io/roborich/pen/wpAsm
+            var background_image_parallax = function($object, multiplier) {
+                multiplier = typeof multiplier !== "undefined" ? multiplier : 0.5;
+                multiplier = 1 - multiplier;
+                var $doc = $(document);
+                $object.css({
+                    "background-attatchment": "fixed"
+                });
+                $(window).scroll(function() {
+                    var from_top = $doc.scrollTop(),
+                        bg_css = "center " + multiplier * from_top + "px";
+                    $object.css({
+                        "background-position": bg_css
+                    });
+                });
+            };
+
+            $(window).scroll(function() {
+                if ($(this).scrollTop() > 50) {
+                    $(".scrolltop:hidden")
+                        .stop(true, true)
+                        .fadeIn();
+                } else {
+                    $(".scrolltop")
+                        .stop(true, true)
+                        .fadeOut();
+                }
+
+                // Make sticky header
+                if ($(this).scrollTop() > 158) {
+                    $(".tm-nav-section").addClass("sticky");
+                } else {
+                    $(".tm-nav-section").removeClass("sticky");
+                }
+            });
+
+            let videoSec;
+
+            $(function() {
+                if (detectIE()) {
+                    alert(
+                        "Please use the latest version of Edge, Chrome, or Firefox for best browsing experience."
+                    );
+                }
+
+                const mainNav = $("#tmMainNav");
+                mainNav.singlePageNav({
+                    filter: ":not(.external)",
+                    offset: $(".tm-nav-section").outerHeight(),
+                    updateHash: true,
+                    beforeStart: function() {
+                        mainNav.removeClass("show");
+                    }
+                });
+
+                videoSec = $("#tmVideoSection");
+
+                // Adjust height of video when window is resized
+                $(window).resize(function() {
+                    setVideoHeight();
+                });
+
+                setVideoHeight();
+
+                $(window).on("load scroll resize", function() {
+                    var scrolled = $(this).scrollTop();
+                    var vidHeight = $("#hero-vid").height();
+                    var offset = vidHeight * 0.6;
+                    var scrollSpeed = 0.25;
+                    var windowWidth = window.innerWidth;
+
+                    if (windowWidth < 768) {
+                        scrollSpeed = 0.1;
+                        offset = vidHeight * 0.5;
+                    }
+
+                    $("#hero-vid").css(
+                        "transform",
+                        "translate3d(-50%, " + -(offset + scrolled * scrollSpeed) + "px, 0)"
+                    ); // parallax (25% scroll rate)
+                });
+
+                // Parallax image background
+                background_image_parallax($(".tm-parallax"), 0.4);
+
+                // Back to top
+                $(".scroll").click(function() {
+                    $("html,body").animate({
+                            scrollTop: $("#home").offset().top
+                        },
+                        "1000"
+                    );
+                    return false;
+                });
+            });
+        </script>
+        <script>
+            /* Login form AJAX */
+            $('#loginform').submit(function(e) {
+                var formId = $(this).attr('id');
+                var submitBtn = $(this).find('input[type=submit]');
+                submitBtn.prop('disabled', true);
+                $('#no-user-error').css('display', 'none');
+                $('#password-error').css('display', 'none');
+                e.preventDefault();
+                $.ajax({
+                    url: "{% url 'users:user_login' %}", // the file to call
+                    type: "POST", // GET or POST
+                    data: $(this).serialize(), // get the form data
+                    success: function(data) {
+                        var login_response = jQuery.parseJSON(data);
+                        console.log(login_response);
+                        if (login_response.user == "nouser") {
+                            $('#no-user-error').css('display', 'block');
+                            submitBtn.prop('disabled', false);
+                        } else if (login_response.user == "password wrong") {
+                            $('#password-error').css('display', 'block');
+                            submitBtn.prop('disabled', false);
+                        } else if ((login_response.user == "not active") && (login_response.user_phone)) {
+                            $('#login-modal').modal('hide');
+                            $('#OTP-modal').modal({
+                                backdrop: 'static',
+                                keyboard: false,
+                                show: true
+                            });
+                            $('#verify-user-phone').html(login_response.user_phone);
+                            document.getElementById(formId).reset();
+                            submitBtn.prop('disabled', false);
+                        } else {
+                            if (login_response.login == "Failed") {
+                                alert("Invalid Login!");
+                            } else {
+                                document.getElementById(formId).reset();
+                                $('#login-modal').modal('hide');
+                                setTimeout(function() {
+                                    console.log(login_response);
+                                    if (login_response.login == "SuccessNoProfile") {
+                                        window.location.replace("{% url 'users:register_profile'  %}")
+                                    } else {
+                                        window.location.replace("{% url 'dashboard:socio'  %}");
+                                    }
+                                }, 400);
+                            }
+                        } /*./else*/
+                        submitBtn.prop('disabled', false);
+                        $('#spinner-login').css('display', 'none');
+                    },
+                    /* end of Success */
+                    error: function(data) {
+                        $('#loginModal').modal('hide');
+                        $('#errorModal').modal({
+                            backdrop: 'static',
+                            keyboard: false,
+                            show: true
+                        });
+                    } /*  end of error */
+                }); /*./ajax*/
+            });
+            /*End of loin form AJAX */
+        </script>
+        <script>
+            $('#myModal').on('shown.bs.modal', function() {
+                $('#myInput').trigger('focus')
+            })
+        </script>
+</body>
+
+</html>

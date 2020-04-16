@@ -1,0 +1,321 @@
+{% load static %}
+
+<div id="hit-menu" class="col-xs-hide col-sm-hide"></div>
+<div class="menu-mobile-background "></div>
+<div id="header">
+    <div class="header-inner">
+        <div class="header-topo">
+            <button class="button-menu-mobile ">
+                    <div class="box-stripes">
+                        <span class="stripe-top"></span>
+                        <span class="stripe-middle"></span>
+                        <span class="stripe-bottom"></span>
+                    </div>
+                </button>
+            <span class="header-menutitle header-menutitle_mobile col-xs-show col-sm-show">Mi Portal</span>
+            <a href="#" class="brand-icon ">LOGO</a>
+        </div>
+        <div class="header-menu">
+            <div class="menu-module">
+                <ul class="menu-moduleWrapper ">
+                    <li class="menu-moduleBt">
+                        <a href="#" class="menu-moduleBt-mainBt">PAGE MENU ITEM</a>
+                        <em class="menu-moduleFeed"></em>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+<div id="menu" class="">
+    <div class="menu-header">
+        <span class="shape-remove-shadow_green"></span>
+        <span class="shape-remove-shadow_white"></span>
+        <div class="header-topo">
+            <div class="header-controlMenu  col-sm-hide col-xs-hide">
+                <span class="header-menutitle">Universitarios</span>
+                <button class="header-controlMenuButton">
+                      <!-- arrow-Left-Icon -->
+                    </button>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div class="header-menu">
+            <div class="header-search ">
+                <!-- Menu-Menu -->
+            </div>
+        </div>
+    </div>
+    <div class="menu-box">
+        <div class="menu-wrapper-inner">
+            <div class="menu-wrapper">
+                <div class="menu-slider">
+                    <div class="menu">
+                        <ul>
+                            <li>
+                                <div class="menu-item">
+                                    <a href="#" class="menu-anchor" data-menu="1">Perfil</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="menu-item">
+                                    <a href="#" class="menu-anchor" data-menu="1">Jugador</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="menu-item">
+                                    <a href="#" class="menu-anchor" data-menu="2">Actas</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="menu-item">
+                                    <a href="#" class="menu-anchor" data-menu="3">Entrenamientos</a>
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="menu-item">
+                                    <a href="#" class="menu-anchor" data-menu="4">Mediciones</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="menu-item">
+                                    <a href="#" class="menu-anchor">Crear Entrenamiento</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="menu-item">
+                                    <a href="#" class="menu-anchor">Crear Partido</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="menu-item">
+                                    <a href="#" class="menu-anchor">Crear Entrenamiento</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="menu-item">
+                                    <a class="click" href="#" data-catid="add_position|0" id="addregister">
+                                        Crear Posición
+                                    </a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="menu-item">
+                                    <a href="#" class="menu-anchor">Crear Resgistro</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="menu-item">
+                                    <a href="#" class="menu-anchor" data-menu="5">Directiva</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="submenu menu" data-menu="1">
+                        <div class="submenu-back">
+                            <div class="menu-item">
+                                <!-- Chevron-Left-Icon -->
+                                <a href="#" class="menu-back">Volver</a></div>
+                        </div>
+                        <ul>
+                            <li>
+                                <div class="menu-item"><a href="#">Editar</a></div>
+                            </li>
+                            <li>
+                                <div class="menu-item"><a href="#">Cambiar Contraseña</a></div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="submenu menu" data-menu="2">
+                        <div class="submenu-back">
+                            <div class="menu-item">
+                                <!-- Chevron-Left-Icon -->
+                                <a href="#" class="menu-back">Volver</a></div>
+                        </div>
+                        {% autoescape off %}
+                        <ul>
+                            {% for minute in minutes%}
+                            <li>
+                                <div class="menu-item">{% csrf_token %}
+                                    <a class="click" href="#" data-catid="get_minute|{{minute.id}}" id="minute{{minute.id}}">                                        
+                                                {{ minute.location }} <br> {{ minute.date }} 
+                                        </a>
+                                </div>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                        {% endautoescape %}
+                    </div>
+                    <div class="submenu menu" data-menu="3">
+                        <div class="submenu-back">
+                            <div class="menu-item">
+                                <!-- Chevron-Left-Icon -->
+                                <a href="#" class="menu-back">Volver</a></div>
+                        </div>
+                        <ul>
+                            <li>
+                                <div class="menu-item"><a href="#">Ver Entrenamiento</a></div>
+                            </li>
+                            <li>
+                                <div class="menu-item"><a href="#">Marcar asistencia</a></div>
+                            </li>
+                            <li>
+                                <div class="menu-item"><a href="#">Enviar Justificativo</a></div>
+                            </li>
+                            <li>
+                                <div class="menu-item">
+                                    <a href="#" class="menu-anchor" data-menu="6">Material</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="submenu menu" data-menu="4">
+                        <div class="submenu-back">
+                            <div class="menu-item">
+                                <!-- Chevron-Left-Icon -->
+                                <a href="#" class="menu-back">Volver</a></div>
+                        </div>
+                        <ul>
+                            <li>
+                                <div class="menu-item">
+                                    <a class="click" href="#" data-catid="add_register|0" id="addregister">
+                                        Agregar Logro
+                                    </a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="menu-item"><a href="#">Ver Historico</a></div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="submenu menu" data-menu="5">
+                        <div class="submenu-back">
+                            <div class="menu-item">
+                                <!-- Chevron-Left-Icon -->
+                                <a href="#" class="menu-back">Volver</a></div>
+                        </div>
+                        <ul>
+                            <li>
+                                <div class="menu-item"><a href="#">Crear Acta</a></div>
+                            </li>
+                            <li>
+                                <div class="menu-item"><a href="#">Modificar Acta</a></div>
+                            </li>
+                            <li>
+                                <div class="menu-item"><a href="#">Ver Votaciones</a></div>
+                            </li>
+                            <li>
+                                <div class="menu-item"><a href="#">Exportar Acta</a></div>
+                            </li>
+                            <li>
+                                <div class="menu-item"><a href="#">Subir Documetno</a></div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="submenu menu" data-menu="6">
+                        <div class="submenu-back">
+                            <div class="menu-item">
+                                <!-- Chevron-Left-Icon -->
+                                <a href="#" class="menu-back">Volver</a></div>
+                        </div>
+                        <ul>
+                            <li>
+                                <div class="menu-item">
+                                    <a class="click" href="#" data-catid="add_register|0" id="addregister">
+                                        Ver Videos
+                                    </a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="menu-item"><a href="#">Esquema de juego</a></div>
+                            </li>
+                            <li>
+                                <div class="menu-item"><a href="#">Consejos del coach</a></div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="content" style="height: 100%;">
+    <div class="content-inner" style="height: 100%; width: 100%; position: fixed;">
+        <div class="content-wrapper">
+            <div class="content-titleSection">
+                <strong class="content-title">Title section</strong>
+                <div class="breadcrumb">
+                    <a href="#" class="breadcrumb-link">Bread</a>
+                    <span class="breadcrumb-separator">.</span>
+                    <a href="#" class="breadcrumb-link">Bread 2</a>
+                    <span class="breadcrumb-separator">.</span>
+                    <a href="#" class="breadcrumb-link breadcrumb-link_ativo">Active Section</a>
+                </div>
+            </div>
+            <div class="content-box" style="height: 100%;">
+                <div class="content-boxInner">
+                    <div class="container" id="click-parent" style=" overflow-y: scroll;height:50vh;">
+                        <div class="card content-container">
+                            <div class="card-body " style="
+                            box-shadow: 0 1px 2px #c9c9c9;
+                            -moz-box-shadow: 0 1px 2px #c9c9c9;
+                            -webkit-box-shadow: 0 1px 2px #c9c9c9;
+                            border-radius: 2px;
+                            margin-bottom: 15px;
+                            width: 100%;" id="content-response">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src={% static "/js/main.js" %}></script>
+<link rel="stylesheet" href={% static "/css/main.css" %} />
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script>
+    $(document).on('click', '.click', function(e) {
+        e.preventDefault();
+        var id;
+        id = $(this).attr("data-catid");
+
+        $.ajax({
+            type: "POST",
+            url: "{% url 'dashboard:load_content' %}",
+            data: {
+                click_id: id,
+                'csrfmiddlewaretoken': '{{ csrf_token }}'
+            },
+            success: function(data) {
+                $("#content-response").empty();
+                $("#content-response").append(data);
+                $("#content-response").css("background: #fff;");
+                $("#content-response").css("box-shadow: 0 3px 10px rgba(0,0,0,0.1);");
+                $("#content-response").css({
+                        top: $(".content-container").position().top,
+                        position: 'absolute'
+                    })
+                    .animate({
+                        top: 0
+                    }, 800, function() {
+                        //callback
+                    });
+
+            },
+            error: function(xhr, ajaxOptions, thrownError) {
+                console.log('xHR: ' + xhr);
+                console.log('ajaxOption: ' + ajaxOptions);
+                console.log('thrownError: ' + thrownError);
+            }
+        });
+    });
+</script>

@@ -1,0 +1,31 @@
+{% block isue_block %}
+<div>
+    {% autoescape off %}
+    <div class="new-content">
+        <h2>{{ isue.title }}</h2>
+        <h5>{{ isue.date }}</h5>
+        <h3>Contenido del punto:</h3> {{ isue.content|linebreaks }}
+    </div>
+    {% endautoescape %}
+    <div>
+        <form id="formABC" action="#" method="POST">
+            <h5>Votación: ¿Está usted de acuerdo con el punto?</h3>
+                <a class="likebutton btn btn-primary btn-lg" id="voteAprove" href="#" data-catid="{{ isue.id }}">Confirmo</a>
+                <a class="likebutton btn btn-primary btn-lg" id="voteReject" href="#" data-catid="{{ isue.id }}">En Contra</a>
+        </form>
+    </div>
+</div>
+{% endblock isue_block %}
+<style>
+
+</style>
+<script>
+    $(document).ready(function() {
+        $("#formABC").submit(function(e) {
+            e.preventDefault();
+            $("#voteAprove").attr("disabled", true);
+            $("#voteReject").attr("disabled", true);
+            return true;
+        });
+    });
+</script>
