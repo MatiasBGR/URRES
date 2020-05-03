@@ -12,8 +12,7 @@ from django.http import HttpResponse
 from django.http import JsonResponse
 import dashboard.urls
 from .models import Profile
-from django import forms
-
+from .forms import ProfileForm
 
 # Create your views here.
 
@@ -45,16 +44,7 @@ def user_login(request):
 	return HttpResponse(JsonResponse(response_data))
 	return redirect('users:profile')
 
-class ProfileForm(forms.ModelForm):
-	class Meta:
-		model = Profile
-		fields = ('avatar','rut', 'phone','birth_date') 
-		widgets = {
-			'avatar': forms.FileInput(attrs={'class': 'myfieldclass','id':'imageUpload'}),
-			'rut': forms.TextInput(attrs={'class': 'myfieldclass'}),
-			'phone': forms.TextInput(attrs={'class': 'myfieldclass'}),
-			'birth_date': forms.DateInput(attrs={'class': 'form-control datetimepicker-input', 'data-target': '#datetimepicker1','id': 'data_input'})
-		}
+
 class ProfileCreate(CreateView):
 	template_name = "profile_form.html"
 	form_class = ProfileForm

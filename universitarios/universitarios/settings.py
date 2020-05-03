@@ -41,6 +41,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'phonenumber_field',
+    'mapbox_location_field',
+    'bootstrap_datepicker_plus',
+    'bootstrap3',
 ]
 
 MIDDLEWARE = [
@@ -128,3 +131,11 @@ USE_TZ = True
 STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+PHONENUMBER_DB_FORMAT =   'INTERNATIONAL'
+
+MAPBOX_KEY = "pk.eyJ1IjoibWF0aWFzdXJyZXMiLCJhIjoiY2s5Ymo4anFqMGZ1MTNtbGtuYWVtMDVoNSJ9.3vjXYw2dzk3GhoKMUgBc5Q"
+
+BOOTSTRAP3 = {
+    'include_jquery': True,
+}

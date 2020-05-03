@@ -1,0 +1,124 @@
+{% block register_block %}
+<div>
+    {% load static %}
+    <form action="{% url 'dashboard:add_match_ok' %}" method="POST" class="form-horizontal" enctype="multipart/form-data">{% csrf_token %}
+        <div class="row h-90">
+            <div class="col-md-12 my-auto">
+                <div class="card card-block col-xs-12 col-md-12 box p-3 mx-auto">
+                    <div class="container">
+                        <h1><strong>Crear Partido</strong>
+                        </h1>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-12" for="name">{{ form.opponent.label }}:</label>
+                        <div class="col-xs-12">
+                            <select class ="float-right btn btn-secondary dropdown-toggle w-100 form-control"onchange="this.nextElementSibling.value=this.value">
+                                <option value=""></option>
+                                {% for field in options %}
+                                <option value="{{ field }}">{{ field }}</option>
+                                {% endfor %}
+                            </select>
+                            {{ form.opponent }} 
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-1" for="name">{{ form.points_infavor.label }}:</label>
+                        <div class="col-xs-12">
+                            {{ form.points_infavor }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-1" for="name">{{ form.points_against.label }}:</label>
+                        <div class="col-xs-12">
+                            {{ form.points_against }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-1" for="name">{{ form.winnig.label }}:</label>
+                        <div class="col-xs-12">
+                            {{ form.winnig }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-1" for="name">{{ form.observation.label }}:</label>
+                        <div class="col-xs-12">
+                            {{ form.observation }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-1" for="name">{{ form.date.label }}:</label>
+                        <div class="col-xs-12">
+                            {{ form.date }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-1" for="name">{{ form.duration.label }}:</label>
+                        <div class="col-xs-12">
+                            {{ form.duration }}
+                        </div>
+                    </div>
+                    <div class="form-group input-group mb-3" style="height:200px; width:50%;overflow:hidden; overflow-y:scroll;">
+                        <label class="control-label col-xs-1" for="name">{{ form.players.label }}:</label>
+                        <div class="col-xs-12">
+                            {{ form.players }}
+                        </div>
+                    </div>
+                    <input class="btn btn-primary col-xs-offset-1 col-xs-12" type="submit" value="Crear" />
+                    {% if form.errors %}
+                    <!-- Error messaging -->
+                    <div id="errors">
+                        <div class="inner">
+                            <p>Existen errores en la información. Por favor corrige lo siguiente:</p>
+                            {{ form.non_field_errors }}
+                            <ul>
+                                {% for field in form %} {% if field.errors %}
+                                <li>{{ field.label }}: {{ field.errors|striptags }}</li>{% endif %} {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- /Error messaging -->
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </form>
+    <style>
+        .select-editable select {
+            position:absolute;
+            top:0px;
+            left:0px;
+            font-size:14px;
+            border:none;
+            width:120px;
+            margin:0;
+        }
+        .select-editable input {
+            position:absolute;
+            top:0px;
+            left:0px;
+            width:100px;
+            padding:1px;
+            font-size:12px;
+            border:none;
+        }
+        .select-editable select:focus, .select-editable input:focus {
+            outline:none;
+        }
+        .btn-primary,
+        .btn-primary:hover {
+            background-color: rgb(21, 82, 212) !important;
+        }
+        
+        .btn-primary,
+        .btn-primary:active {
+            background-color: rgb(87, 236, 1) !important;
+        }
+        
+        .btn-primary,
+        .btn-primary:visited {
+            background-color: #8064A2 !important;
+        }
+    </style>
+    
+</div>
+{% endblock register_block %}

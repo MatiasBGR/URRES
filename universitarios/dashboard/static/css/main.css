@@ -13,6 +13,11 @@
     width: 0px !important
 }
 
+.grande {
+    font-size: larger !important;
+    font-weight: bolder !important;
+}
+
 .clearfix:after {
     content: ".";
     display: block;
@@ -220,7 +225,7 @@ input[type="submit"] {
 }
 
 #header .menu-module .menu-moduleWrapper {
-    overflow-x: scroll;
+    
 }
 
 #header .menu-module .menu-moduleBt {
