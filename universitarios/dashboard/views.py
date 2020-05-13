@@ -1,17 +1,18 @@
+import simplejson as simplejson
+from datetime import datetime as dt
 from django.shortcuts import render, reverse
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_protect
 from django.db import transaction
 from django.views.generic import  TemplateView
 from django.http import HttpResponseRedirect, HttpResponse, JsonResponse
-import simplejson as simplejson
 from django.template.loader import render_to_string
 from functools import partial
 from django.template import RequestContext
 from users.models import Profile
 from core.models import Minute, Isue
-from dashboard.models import Position, Player, Match
-from dashboard.forms import PositionForm, PlayerForm, RecordForm, MatchForm, TrainingForm
+from dashboard.models import Position, Player, Match, Training, Assistants
+from dashboard.forms import PositionForm, PlayerForm, RecordForm, MatchForm, TrainingForm, MeasureForm, AssistanceForm
 from django.contrib import messages 
 from django.contrib.auth.models import Group
 
@@ -73,6 +74,12 @@ def add_record(CreateView,request):
     def get_success_url(self):
         return reverse('dashboard:socio')
     return render_to_string("content/new_record.html",{'form':form_class},request)
+def add_measure(CreateView,request):
+    template_name = "content/new_measure.html"
+    form_class = MeasureForm
+    def get_success_url(self):
+        return reverse('dashboard:socio')
+    return render_to_string("content/new_measure.html",{'form':form_class},request)
 def add_match(CreateView,request):
     template_name = "content/new_match.html"
     form_class = MatchForm
@@ -86,6 +93,16 @@ def add_training(CreateView,request):
     def get_success_url(self):
         return reverse('dashboard:socio')
     return render_to_string("content/new_training.html",{'form':form_class},request)
+def see_training(ids,request):
+    trainings = Training.objects.all()
+    return render_to_string("content/see_training.html",{'trainings': trainings })
+def mark_assistance(CreateView,request):
+    last_training = Training.objects.filter(date__lte=dt.today()).order_by('-date').first()
+    template_name = "content/mark_assistance.html"
+    form_class = AssistanceForm(initial={'player': request.user.player, 'training': last_training})
+    def get_success_url(self):
+        return reverse('dashboard:socio')
+    return render_to_string("content/mark_assistance.html",{'form':form_class},request)
 
 def type_of_request(messaje,request):
     action = ""
@@ -96,14 +113,17 @@ def type_of_request(messaje,request):
         'get_minute': get_minute,
         'get_register': get_register,
         'add_record': add_record,
+        'add_measure': add_measure,
         'add_position':add_position,
         'add_player':add_player,
         'add_match':add_match,
         'add_training':add_training,
+        'see_training':see_training,
+        'mark_assistance':mark_assistance,
     }
     return switcher[action](ids,request)
 
-def add_position_ok(request):
+def add_position_ok(request): 
     context = RequestContext(request)
     if request.method == 'POST':
         form = PositionForm(request.POST)
@@ -118,7 +138,8 @@ def add_training_ok(request):
         if form.is_valid():
             form.save(commit=True)
             return HttpResponseRedirect(reverse('dashboard:socio'))
-    return HttpResponseRedirect(reverse('dashboard:socio'))
+    error_string = ' '.join([' '.join(x for x in l) for l in list(form.errors.values())])
+    return HttpResponse(simplejson.dumps(error_string))
 def add_match_ok(request):
     context = RequestContext(request)
     if request.method == 'POST':
@@ -126,7 +147,19 @@ def add_match_ok(request):
         if form.is_valid():
             form.save(commit=True)
             return HttpResponseRedirect(reverse('dashboard:socio'))
-    return HttpResponseRedirect(reverse('dashboard:socio'))
+        error_string = ' '.join([' '.join(x for x in l) for l in list(form.errors.values())])
+        return HttpResponse(simplejson.dumps(error_string))
+def add_measure_ok(request):
+    context = RequestContext(request)
+    if request.method == 'POST':
+        form = MeasureForm(request.POST)
+        if form.is_valid():
+            obj = form.save(commit=False)
+            obj.player = request.user.player
+            obj.save()
+            return HttpResponseRedirect(reverse('dashboard:socio'))
+        error_string = ' '.join([' '.join(x for x in l) for l in list(form.errors.values())])
+        return HttpResponse(simplejson.dumps(error_string))
 def add_record_ok(request):
     context = RequestContext(request)
     if request.method == 'POST':
@@ -152,3 +185,20 @@ def add_player_ok(request):
                 return HttpResponse(simplejson.dumps('Exito, sus datatos fueron actualizados'))
         error_string = ' '.join([' '.join(x for x in l) for l in list(form.errors.values())])
         return HttpResponse(simplejson.dumps(error_string))
+def mark_assistance_ok(request):
+    context = RequestContext(request)
+    if request.method == 'POST':
+        form = AssistanceForm(request.POST)
+        if form.is_valid():
+            obj, created = Assistants.objects.update_or_create(
+                player=request.user.player,
+                training = Training.objects.filter(date__lte=dt.today()).order_by('-date').first(),
+                defaults = {"observation":form.cleaned_data.get('observation')}
+            )
+            if created:
+                return HttpResponse(simplejson.dumps('Exito, ha sido marcado como asistente'))
+            if not created :
+                return HttpResponse(simplejson.dumps('Exito, sus datatos fueron actualizados'))
+        error_string = ' '.join([' '.join(x for x in l) for l in list(form.errors.values())])
+        return HttpResponse(simplejson.dumps(error_string))
+    

@@ -24,7 +24,7 @@ class Record(models.Model):
        verbose_name = 'Registro'
        verbose_name_plural = 'Registros'
    def __str__(self):
-        return self.name
+        return self.name+", se mide en ("+self.measure_unit+"). "+self.description+" "+self.info
  
 class Player(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, blank=True,null=True)
@@ -42,20 +42,20 @@ class Player(models.Model):
         verbose_name_plural = 'Jugadores'
     def __str__(self):
         if hasattr(self.user, 'first_name'):
-            return self.user.first_name
+            return self.user.first_name+" "+self.user.last_name
         return "No Name"
 
 class Measure(models.Model):
     player = models.ForeignKey(Player, on_delete=models.CASCADE,)
     record = models.ForeignKey(Record, on_delete=models.CASCADE,)
-    measure= models.DecimalField(max_digits=5, decimal_places=3)
+    measure= models.DecimalField(max_digits=9, decimal_places=3)
     date = models.DateTimeField(default=datetime.datetime.now)
     observation = models.TextField()
     class Meta:
-        verbose_name = 'Asistentes a entrenamineto'
-        verbose_name_plural = 'Asistentes a entrenaminetos'
+        verbose_name = 'Medicion'
+        verbose_name_plural = 'Mediciones'
     def __str__(self):
-        return str(self.player.name+" "+self.record.name)
+        return str(self.player.user.first_name)+" "+str(self.player.user.last_name)+" "+self.record.name
 
 class Match (models.Model):
     opponent =  models.CharField(max_length=100)
@@ -83,6 +83,7 @@ class Played(models.Model):
         verbose_name_plural = 'Partidos Jugados'
     def __str__(self):
         return str(self.player.user.first_name)+" "+str(self.player.user.last_name)+", "+str(self.match)
+
 class Training(models.Model):
     observation =  models.TextField()
     place= models.CharField(max_length=250)
@@ -106,4 +107,4 @@ class Assistants(models.Model):
         verbose_name = 'Asistentes a entrenamineto'
         verbose_name_plural = 'Asistentes a entrenaminetos'
     def __str__(self):
-        return str(self.player+" "+self.training)
+        return str(self.player)+" "+str(self.training)

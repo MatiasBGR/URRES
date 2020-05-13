@@ -2,7 +2,6 @@
 
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -15,15 +14,14 @@
     <link rel="stylesheet" href={% static "/css/bootstrap.min.css" %} />
     <!-- https://getbootstrap.com/ -->
     <link rel="stylesheet" href={% static "/css/tooplate-style.css" %} />
-
+    
 </head>
-
 <body>
     <!-- page header -->
     <div class="container" id="home">
         <div class="col-12 text-center">
             <div class="tm-page-header">
-                <i class="fas fa-4x fa-football-ball mr-4"></i>
+                <img src={% static "/img/logo-1.png" %} alt="Image" height="100"  />
                 <h1 class="d-inline-block text-uppercase">UNIVERSITARIOS</h1>
             </div>
         </div>
@@ -105,14 +103,16 @@
                 </header>
                 <p>
                     Ingresa a tu sitio de socio en el siguiente link
-                    <a rel="nofollow noopener" href="https://www.tooplate.com">Mi Panel</a
-            >. Aca podras pagar tus cuotas, revisar tu información de jugador, 
-            acceder a material de entrenamiento y mucho mas.
+                    <a class="nofollow noopener" href="" data-toggle="modal" data-target="#login-modal">
+                      Mi Panel
+                    </a>.
+                     Aca podras pagar tus cuotas, revisar tu información de jugador, 
+                    acceder a material de entrenamiento, revisar tus logros, ver y votar en las 
+                    actas del club y mucho mas.
           </p>
           <p>
-            Sed interdum, purus vulputate congue luctus, lorem massa dignissim
-            nisi, sed condimentum nibh lorem quis lorem. Nulla sed erat
-            dignissim, tincidunt ante ac, egestas turpis.
+            Recuerda ingresar periodicamente para mantenerte al dia con la información, 
+            ademas de marcar tu asistencia a los entrenamientos o tus justificativos.
           </p>
         </section>
         <section class="col-md-6 col-sm-12 tm-feature-block">
@@ -121,13 +121,14 @@
             <h3 class="tm-feature-h">¿Quieres ser parte de nuestra familia?</h3>
           </header>
           <p>
-            unetete a nuestro club, de valores y blah blah , nec viverra quam nisl at velit. Pellentesque
-            iaculis convallis egestas.
+            Unetete a nuestro club, de valores y fraternidad. Escribenos a urres2012@gmail.com 
+            indicandonos tu intención de ser parte de nuestra familia.
           </p>
           <p>
-            Nunc ut elit eget velit mollis sodales. Ut non mauris ut ligula
-            mattis consectetur. Aenean augue arcu, rhoncus at nibh nec, lacinia
-            blandit nulla.
+            Si eres un Sponsor o Amigo del club, no dudes en contactarnos, 
+            estaremos orgullosos de llevar tu imagen en nuestra camiseta,
+            ademas estamos interesados en formar acuerdos y lazos con las distintas
+            organizaciones locales.
           </p>
         </section>
       </div>
@@ -153,9 +154,9 @@
             <div class="tm-activity-block-text">
               <h3 class="tm-text-blue">Entrenamientos</h3>
               <p>
-               Aca entrenando con los cabros montes,
-                nascetur ridiculus mus. Sed eu turpis nec sem lacinia
-                condimentum et a orci.
+               Buscamos consolidarnos como el equipo con mejores entrenamientos
+               en la region, hacemos enfasis en lo tecnico y tactico, en la resistencia
+               fisica y mental.
               </p>
             </div>
           </div>
@@ -168,9 +169,9 @@
             <div class="tm-activity-block-text">
               <h3 class="tm-text-blue">Nuestros colores</h3>
               <p>
-                Aca la camiseta y too  magnis dis parturient montes,
-                nascetur ridiculus mus. Sed eu turpis nec sem lacinia
-                condimentum et a orci.
+                El año 2020 constituimos nuestros colores como club, que buscan
+                representar a la ciudad que nos vio nacer, La Serena, pero invitamos 
+                a cualquiera de la region a unirsenos.
               </p>
             </div>
           </div>
@@ -183,9 +184,10 @@
             <div class="tm-activity-block-text">
               <h3 class="tm-text-blue">Donde entrenamos</h3>
               <p>
-                Orci varius natoque penatibus et magnis dis parturient montes,
-                nascetur ridiculus mus. Sed eu turpis nec sem lacinia
-                condimentum et a orci.
+                Entrenamos todos los martes y jueves a las 8:30 PM.
+                Contamos con dos canchas para entrenar, los martes entrenamos
+                en las dependencias de la ULS (Colina el pino) y Jueves en el Parque 
+                Pedro de Valdivia
               </p>
             </div>
           </div>
@@ -196,11 +198,11 @@
               <img src={% static "/img/img-04.jpg" %} alt="Image"height="180" width="180" class="tm-activity-img" />
             </div>
             <div class="tm-activity-block-text">
-              <h3 class="tm-text-blue">No se me ocurre que wea poner</h3>
+              <h3 class="tm-text-blue">Más que un equipo, somos familia</h3>
               <p>
-                Orci varius natoque penatibus et magnis dis parturient montes,
-                nascetur ridiculus mus. Sed eu turpis nec sem lacinia
-                condimentum et a orci.
+                Buscamos fomentar los valores del rugby, el apoyo esta
+                afuera y adentro de la cancha, conoceras amigos que 
+                duraran toda la vida.
               </p>
             </div>
           </div>
@@ -643,5 +645,4 @@
             })
         </script>
 </body>
-
 </html>

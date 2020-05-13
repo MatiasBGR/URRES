@@ -1,0 +1,66 @@
+{% block register_block %}
+<div>
+    {% load static %}
+
+        <div class="row h-90">
+            <div class="col-md-12 my-auto">
+                <div class="card card-block col-xs-12 col-md-12 box p-3 mx-auto">
+                    <div class="container">
+                        <h1><strong>Ver Entrenamientos</strong>
+                        </h1>
+                    </div>
+                    <ul class="list-group">
+                        {% for training in trainings %}
+                        <li class="list-group-item" >
+                            <a class="click" href="#" data-catid="get_training|{{training.id}}" id="training{{training.id}}">                                        
+                                {{ training.place }}, fecha: {{ training.date }}
+                            </a>
+                        </li>
+                    {% endfor %} 
+                    </ul>   
+                </div>
+            </div>
+        </div>
+
+    <style>
+        body {
+            background: whitesmoke;
+            font-family: 'Open Sans', sans-serif;
+        }
+        
+        .container {
+            margin: 30px auto;
+            padding: 20px;
+        }
+        
+        h1 {
+            font-size: 20px;
+            text-align: center;
+            margin: 20px 0 20px;
+        }
+        
+        h1 small {
+            display: block;
+            font-size: 15px;
+            padding-top: 8px;
+            color: gray;
+        }
+        
+        .btn-primary,
+        .btn-primary:hover {
+            background-color: rgb(21, 82, 212) !important;
+        }
+        
+        .btn-primary,
+        .btn-primary:active {
+            background-color: rgb(87, 236, 1) !important;
+        }
+        
+        .btn-primary,
+        .btn-primary:visited {
+            background-color: #8064A2 !important;
+        }
+    </style>
+    
+</div>
+{% endblock register_block %}

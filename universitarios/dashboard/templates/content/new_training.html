@@ -1,52 +1,58 @@
-
-{{ form.media }}
-{% block registerTraining_block %}
-<head>
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-    <script src="//code.jquery.com/jquery.min.js"></script>
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    
-</head>
-
-{% load static %}
+{% block register_block %}
 <div>
+    {% load static %}
     <form action="{% url 'dashboard:add_training_ok' %}" method="POST" class="form-horizontal" enctype="multipart/form-data">{% csrf_token %}
         <div class="row h-90">
-            <div class="col-sm-12 col-xs-12  my-auto">
-                <div class="card card-block col-xs-12 col-sm-12 box p-3 mx-auto">
+            <div class="col-md-12 my-auto">
+                <div class="card card-block col-xs-12 col-md-12 box p-3 mx-auto">
                     <div class="container">
                         <h1><strong>Crear Entrenamiento</strong>
                         </h1>
                     </div>
-                    {% for field in form %}
-                        {% if field.label == form.date.label %}
-                        <div class="form-group">
-                            <label style="text-align: left;"class="control-label col-xs-12" for="name">{{ field.label }}</label>
-                            <div class="col-xs-12">
-                                <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
-                                    {{ form.date }}
-                                    <div class="input-group-append " data-target="#datetimepicker1" data-toggle="datetimepicker">
-                                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-1" for="name">{{ form.observation.label }}:</label>
+                        <div class="col-xs-12">
+                            {{ form.observation }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-1" for="name">{{ form.place.label }}:</label>
+                        <div class="col-xs-12">
+                            {{ form.place }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label style="text-align: left;"class="control-label col-xs-12" for="name">
+                            {{ form.date.label }}
+                        </label>
+                        <div class="col-xs-12">
+                            <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
+                                {{ form.date }}
+                                <div class="input-group-append " data-target="#datetimepicker1" data-toggle="datetimepicker">
+                                    <div class="input-group-text">
+                                        <i class="fa fa-calendar"></i>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        {% elif field.label == form.players.label %}
-                        <div class="form-group" style="height:200px; width:70%;overflow:hidden; overflow-y:scroll;">
-                            <label style="text-align: left;"class="control-label col-xs-12" for="name">{{ form.players.label }}:</label>
+                    </div>
+                    <div class="form-group">
+                        <label style="text-align: left;"class="control-label col-xs-12" for="name">
+                            {{ form.players.label }}
+                        </label>
+                        <div class="form-group input-group mb-3" style="height:200px; width:50%;overflow:hidden; overflow-y:scroll;">
                             <div class="col-xs-12">
                                 {{ form.players }}
-                            </div>
+                            </div>                        
                         </div>
-                        {% else %}
-                        <div class="form-group">
-                            <label style="text-align: left;"class="control-label col-xs-12" for="name">{{ field.label }}</label>
-                            <div class="col-xs-12">
-                                {{ field }}
-                            </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-1" for="name">{{ form.location.label }}:</label>
+                        <div class="col-xs-12">
+                            {{ form.location }}
                         </div>
-                        {% endif %}  
-                    {% endfor %}
+                    </div>
+                    {{ form.media }}
                     
                     <input class="btn btn-primary col-xs-offset-1 col-xs-12" type="submit" value="Crear" />
                     {% if form.errors %}
@@ -67,53 +73,59 @@
             </div>
         </div>
     </form>
-</div>
-
-<script>
-    $(function () {
-      $("#datetimepicker1").datepicker({
+    <script>
+        // wait for the DOM to be loaded 
+        $(document).ready(function() { 
+            // bind 'myForm' and provide a simple callback function 
+            $('#myForm').ajaxForm(function(data) { 
+                alert(data)
+                window.location.reload();
+            }); 
+        }); 
+    </script>
+    <script>
+        $(function () {
+          $("#datetimepicker1").datepicker({
+          });
+        });
+    </script>
+     <style>
+        .select-editable select {
+            position:absolute;
+            top:0px;
+            left:0px;
+            font-size:14px;
+            border:none;
+            width:120px;
+            margin:0;
+        }
+        .select-editable input {
+            position:absolute;
+            top:0px;
+            left:0px;
+            width:100px;
+            padding:1px;
+            font-size:12px;
+            border:none;
+        }
+        .select-editable select:focus, .select-editable input:focus {
+            outline:none;
+        }
+        .btn-primary,
+        .btn-primary:hover {
+            background-color: rgb(21, 82, 212) !important;
+        }
         
-      });
-    });
-</script>
-<style>
-    body {
-        background: whitesmoke;
-        font-family: 'Open Sans', sans-serif;
-    }
+        .btn-primary,
+        .btn-primary:active {
+            background-color: rgb(87, 236, 1) !important;
+        }
+        
+        .btn-primary,
+        .btn-primary:visited {
+            background-color: #8064A2 !important;
+        }
+    </style>
     
-    .container {
-        margin: 30px auto;
-        padding: 20px;
-    }
-    
-    h1 {
-        font-size: 20px;
-        text-align: center;
-        margin: 20px 0 20px;
-    }
-    
-    h1 small {
-        display: block;
-        font-size: 15px;
-        padding-top: 8px;
-        color: gray;
-    }
-    
-    .btn-primary,
-    .btn-primary:hover {
-        background-color: rgb(21, 82, 212) !important;
-    }
-    
-    .btn-primary,
-    .btn-primary:active {
-        background-color: rgb(87, 236, 1) !important;
-    }
-    
-    .btn-primary,
-    .btn-primary:visited {
-        background-color: #8064A2 !important;
-    }
-</style>
-
-{% endblock registerTraining_block %}
+</div>
+{% endblock register_block %}

@@ -139,19 +139,19 @@ p:last-child {
 .tm-banner-text-container {
   position: relative;
   z-index: 1000;
-  color: white;
+  color: whitesmoke;
   text-align: center;
   max-width: 520px;
 }
 
 .tm-banner-title {
-  font-size: 3rem;
+  font-size: 5rem;
   font-weight: 300;
   margin-bottom: 40px;
 }
 
 .tm-banner-subtitle {
-  font-size: 1.5rem;
+  font-size: 3rem;
   font-weight: 300;
   max-width: 500px;
 }
@@ -207,8 +207,9 @@ p:last-child {
   -ms-flex-pack: center;
   justify-content: center;
   width: 100%;
-  height: 240px;
+  height: 450px;
   background-image: url(../img/img-activities.jpg);
+  background-size: 1500px;
   margin-bottom: 68px;
   position: relative;
 }

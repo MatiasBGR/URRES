@@ -1,4 +1,4 @@
-from .models import Player, Position, Record, Match, Training
+from .models import Player, Position, Record, Match, Training, Measure, Assistants
 from django import forms
 from phonenumber_field.formfields import PhoneNumberField
 from mapwidgets.widgets import GooglePointFieldWidget
@@ -6,7 +6,6 @@ from bootstrap_datepicker_plus import DatePickerInput
 
 
 class PlayerForm(forms.ModelForm):
-
 	#e_phone = PhoneNumberField(required=True)
 	emergency_phone = PhoneNumberField(
 						widget=forms.TextInput(attrs={'placeholder':'+569123456789'}), 
@@ -79,6 +78,25 @@ class RecordForm(forms.ModelForm):
 			'measure_unit': forms.TextInput(attrs={'measure_unit': 'title','name': 'title','class': 'mdc-text-field__input'}),
 			'info': forms.TextInput(attrs={'id': 'info','name': 'title','class': 'mdc-text-field__input'}),
 		}
+class MeasureForm(forms.ModelForm):
+	class Meta:
+		model = Measure
+		fields = (
+			'record',
+			'measure',
+			'observation',
+		)
+		labels = {
+			'record':"Nombre del registro",
+			'measure':"Numero realizado",
+			'observation':"Observación",
+		}
+		widgets = {
+			'record':forms.Select(attrs={'class': 'float-right btn btn-secondary dropdown-toggle w-100 form-control'}),
+			'measure': forms.NumberInput(attrs={'class': 'mdc-text-field__input'}),
+			'description': forms.TextInput(attrs={'description': 'title','name': 'title','class': 'mdc-text-field__input'}),
+		}
+
 class MatchForm(forms.ModelForm):
 	TRUE_FALSE_CHOICES = (
     	(True, 'Sí'),
@@ -93,6 +111,14 @@ class MatchForm(forms.ModelForm):
                               initial='', widget=forms.Select(
 								  attrs={'class': 'dropdown-toggle w-100 form-control'}), 
 								  required=True)
+	date = forms.DateTimeField(
+        input_formats=['%d/%m/%Y'],
+        widget=forms.DateTimeInput(attrs={
+            'class': 'form-control datetimepicker-input',
+            'data-target': '#datetimepicker1',
+			'style': 'font-size: 20px'
+        })
+    )
 	class Meta:
 		model = Match
 		fields = (
@@ -120,20 +146,31 @@ class MatchForm(forms.ModelForm):
 			'points_infavor': forms.NumberInput(attrs={'id': 'points_infavor','style': 'font-size: 20px','class': ' mdc-text-field__input'}),
 			'points_against': forms.NumberInput(attrs={'id': 'points_against','style': 'font-size: 20px','class': ' mdc-text-field__input'}),
 			'observation': forms.TextInput(attrs={'id': 'observation','style': 'font-size: 20px','class': 'mdc-text-field__input'}),
-			'date': forms.DateInput(attrs={'id': 'date','style': 'font-size: 20px','class': 'mdc-text-field__input'}),
 			'duration': forms.TimeInput(attrs={'id': 'duration','style': 'font-size: 20px','class': 'mdc-text-field__input '}),
 		}
 
+class AssistanceForm(forms.ModelForm):
+	player = forms.CharField(widget=forms.TextInput(attrs={'class': 'mdc-text-field__input','readonly':'readonly'}),  label = "Jugador")
+	training = forms.CharField(widget=forms.TextInput(attrs={'class': 'mdc-text-field__input','readonly':'readonly'}),  label = "Entrenamiento")
+	class Meta:
+		model = Assistants
+		fields = (
+			'observation',
+		)
+		labels = {
+			'observation':"Observación",
+		}
+		widgets = {
+			'observation': forms.TextInput(attrs={'measure_unit': 'title','name': 'title','class': 'mdc-text-field__input'}),
+		}
 class TrainingForm(forms.ModelForm):
 	players = forms.ModelMultipleChoiceField(
-			label='Jugadores participantes del entrenamiento',
-            widget=forms.CheckboxSelectMultiple(
-				attrs={ 'class':'btn btn-primary',
-				'style': 'font-size: 20px'}),
+			label='Jugadores',
+            widget=forms.CheckboxSelectMultiple,
 			queryset=Player.objects.all(),
-            required=False)
+            required=True)
 	date = forms.DateTimeField(
-        input_formats=['%d/%m/%Y %H:%M'],
+        input_formats=['%d/%m/%Y'],
         widget=forms.DateTimeInput(attrs={
             'class': 'form-control datetimepicker-input',
             'data-target': '#datetimepicker1',
@@ -156,6 +193,6 @@ class TrainingForm(forms.ModelForm):
 			'location': 'Lugar de entrenamiento'
 		}
 		widgets = {
-			'observation': forms.TextInput(attrs={'id': 'observation','style': 'font-size: 20px','class': 'mdc-text-field__input'}),
-			'place': forms.TextInput(attrs={'id': 'place','style': 'font-size: 20px','class': 'mdc-text-field__input'}),
+			'observation': forms.TextInput(attrs={'id': 'observation','style': 'font-size: 20px','class': 'mdc-text-field__input w-100'}),
+			'place': forms.TextInput(attrs={'id': 'place','style': 'font-size: 20px','class': 'mdc-text-field__input w-100'}),
 		}

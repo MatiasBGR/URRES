@@ -14,5 +14,7 @@ urlpatterns = [
     path('player/', views.add_player_ok, name='add_player_ok'),
     path('match/', views.add_match_ok, name='add_match_ok'),
     path('training/', views.add_training_ok, name='add_training_ok'),
+    path('measure/', views.add_measure_ok, name='add_measure_ok'),
+    path('Assistance/', views.mark_assistance_ok, name='mark_assistance_ok'),
 
 ]

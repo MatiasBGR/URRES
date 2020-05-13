@@ -1,4 +1,4 @@
-{% block register_block %}
+{% block match_block %}
 <div>
     {% load static %}
     <form action="{% url 'dashboard:add_match_ok' %}" method="POST" class="form-horizontal" enctype="multipart/form-data">{% csrf_token %}
@@ -46,9 +46,18 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-xs-1" for="name">{{ form.date.label }}:</label>
+                        <label style="text-align: left;"class="control-label col-xs-12" for="name">
+                            {{ form.date.label }}
+                        </label>
                         <div class="col-xs-12">
-                            {{ form.date }}
+                            <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
+                                {{ form.date }}
+                                <div class="input-group-append " data-target="#datetimepicker1" data-toggle="datetimepicker">
+                                    <div class="input-group-text">
+                                        <i class="fa fa-calendar"></i>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="form-group">
@@ -57,10 +66,14 @@
                             {{ form.duration }}
                         </div>
                     </div>
-                    <div class="form-group input-group mb-3" style="height:200px; width:50%;overflow:hidden; overflow-y:scroll;">
-                        <label class="control-label col-xs-1" for="name">{{ form.players.label }}:</label>
-                        <div class="col-xs-12">
-                            {{ form.players }}
+                    <div class="form-group">
+                        <label style="text-align: left;"class="control-label col-xs-12" for="name">
+                            {{ form.players.label }}
+                        </label>
+                        <div class="form-group input-group mb-3" style="height:200px; width:50%;overflow:hidden; overflow-y:scroll;">
+                            <div class="col-xs-12">
+                                {{ form.players }}
+                            </div>                        
                         </div>
                     </div>
                     <input class="btn btn-primary col-xs-offset-1 col-xs-12" type="submit" value="Crear" />
@@ -82,43 +95,58 @@
             </div>
         </div>
     </form>
-    <style>
-        .select-editable select {
-            position:absolute;
-            top:0px;
-            left:0px;
-            font-size:14px;
-            border:none;
-            width:120px;
-            margin:0;
-        }
-        .select-editable input {
-            position:absolute;
-            top:0px;
-            left:0px;
-            width:100px;
-            padding:1px;
-            font-size:12px;
-            border:none;
-        }
-        .select-editable select:focus, .select-editable input:focus {
-            outline:none;
-        }
-        .btn-primary,
-        .btn-primary:hover {
-            background-color: rgb(21, 82, 212) !important;
-        }
-        
-        .btn-primary,
-        .btn-primary:active {
-            background-color: rgb(87, 236, 1) !important;
-        }
-        
-        .btn-primary,
-        .btn-primary:visited {
-            background-color: #8064A2 !important;
-        }
-    </style>
-    
 </div>
-{% endblock register_block %}
+<style>
+    .select-editable select {
+        position:absolute;
+        top:0px;
+        left:0px;
+        font-size:14px;
+        border:none;
+        width:120px;
+        margin:0;
+    }
+    .select-editable input {
+        position:absolute;
+        top:0px;
+        left:0px;
+        width:100px;
+        padding:1px;
+        font-size:12px;
+        border:none;
+    }
+    .select-editable select:focus, .select-editable input:focus {
+        outline:none;
+    }
+    .btn-primary,
+    .btn-primary:hover {
+        background-color: rgb(21, 82, 212) !important;
+    }
+    
+    .btn-primary,
+    .btn-primary:active {
+        background-color: rgb(87, 236, 1) !important;
+    }
+    
+    .btn-primary,
+    .btn-primary:visited {
+        background-color: #8064A2 !important;
+    }
+</style>
+<script>
+    $(function () {
+        $("#datetimepicker1").datepicker({
+        });
+    });
+</script>
+<script>
+    // wait for the DOM to be loaded 
+    $(document).ready(function() { 
+        // bind 'myForm' and provide a simple callback function 
+        $('#myForm').ajaxForm(function(data) { 
+            alert(data)
+            window.location.reload();
+        }); 
+    }); 
+</script>
+{% endblock match_block %}
