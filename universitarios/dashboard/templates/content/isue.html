@@ -10,22 +10,40 @@
     <div>
         <form id="formABC" action="#" method="POST">
             <h5>Votación: ¿Está usted de acuerdo con el punto?</h3>
-                <a class="likebutton btn btn-primary btn-lg" id="voteAprove" href="#" data-catid="{{ isue.id }}">Confirmo</a>
-                <a class="likebutton btn btn-primary btn-lg" id="voteReject" href="#" data-catid="{{ isue.id }}">En Contra</a>
+                <a class="likebutton btn btn-primary btn-lg" id="vote" href="#" data-catid="vote|{{ isue.id }}/+">Apruebo</a>
+                <a class="likebutton btn btn-primary btn-lg" id="vote" href="#" data-catid="vote|{{ isue.id }}/-">Rechazo</a>
         </form>
     </div>
 </div>
 {% endblock isue_block %}
-<style>
 
-</style>
 <script>
-    $(document).ready(function() {
-        $("#formABC").submit(function(e) {
-            e.preventDefault();
-            $("#voteAprove").attr("disabled", true);
-            $("#voteReject").attr("disabled", true);
-            return true;
+    $(document).on('click', '#vote', function(e) {
+        event.stopImmediatePropagation(); 
+        var id;
+        id = $(this).attr("data-catid");
+        var csrftoken = $("[name=csrfmiddlewaretoken]").val();
+        $.ajax({
+            type: "POST",
+            url: "{% url 'dashboard:load_content' %}",
+            headers: {
+                "X-CSRFToken": csrftoken
+            },
+            data: {
+                click_id: id,
+                'csrfmiddlewaretoken': '{{ csrf_token }}'
+            },
+            cache: true,
+            success: function(data) {
+                alert(data);
+            },
+            error: function(xhr, ajaxOptions, thrownError) {
+                console.log('xHR: ' + xhr);
+                console.log('ajaxOption: ' + ajaxOptions);
+                console.log('thrownError: ' + thrownError);
+            }
         });
+        
     });
+   
 </script>

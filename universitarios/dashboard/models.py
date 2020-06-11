@@ -86,6 +86,7 @@ class Played(models.Model):
 
 class Training(models.Model):
     observation =  models.TextField()
+    description =  models.TextField()
     place= models.CharField(max_length=250)
     date  = models.DateField(null=True, blank=True)
     location = LocationField(null=True, blank=True, 

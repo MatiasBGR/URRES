@@ -2,8 +2,12 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from mapbox_location_field.models import LocationField
+from mapbox_location_field.spatial.models import SpatialLocationField
 from phonenumber_field.modelfields import PhoneNumberField
 import datetime
+from vote.models import VoteModel
+
 # Create your models here.
 
 STATUS = (
@@ -47,6 +51,10 @@ class Minute(models.Model):
     table = models.TextField('Tabla',)
     date = models.DateField('Fecha',)
     location =  models.CharField('Ubicación',max_length=250)
+    locationGPS = LocationField(null=True, blank=True, 
+            map_attrs={"center": [-71.24076894770667,-29.915835830267262], 
+            "marker_color": "blue",
+            "placeholder": "Lugar de reunión",})
     content = models.TextField('Contenido')
     users = models.ManyToManyField(User, through='Minute_Assistants')
     class Meta:
@@ -65,10 +73,9 @@ class Minute_Assistants(models.Model):
     def __str__(self):
         return str(self.user+" "+self.minute)
 
-class Isue(models.Model):
+class Isue(VoteModel,models.Model):
     title =  models.CharField('Titulo',max_length=100)
     content = models.TextField('Contenido',)
-    votes = models.ManyToManyField(User, through='Vote')
     minute = models.ForeignKey(Minute, on_delete=models.CASCADE)
     class Meta:
         verbose_name = 'Tema'
@@ -76,13 +83,4 @@ class Isue(models.Model):
     def __str__(self):
         return self.title
 
-class Vote(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True,null=True)
-    isue = models.ForeignKey(Isue, on_delete=models.CASCADE, blank=True,null=True)
-    on_favor = models.BooleanField(null=True)
-    class Meta:
-        verbose_name = 'Voto'
-        verbose_name_plural = 'Votos'
-        unique_together = (('user','isue'),)
-    def __str__(self):
-        return str(self.user.name+" voto en "+señf.isue)
+

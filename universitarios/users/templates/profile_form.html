@@ -1,5 +1,5 @@
 <!-- Bootstrap 4 -->
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0">
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet">
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
@@ -32,7 +32,7 @@
                             <label for="imageUpload"></label>
                         </div>
                         <div class="avatar-preview">
-                            <div id="imagePreview" style="background-image: url(http://i.pravatar.cc/500?img=7);">
+                            <div id="imagePreview" style="background-image: url(http://i.pravatar.cc/300?img=7);">
                             </div>
                         </div>
                     </div>
@@ -52,6 +52,7 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <label class="control-label col-xs-1" for="birth_date">{{ form.birth_date.label }}:</label>
                     <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
                         {{ form.birth_date }}
                         <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">

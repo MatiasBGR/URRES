@@ -171,6 +171,7 @@ class TrainingForm(forms.ModelForm):
             required=True)
 	date = forms.DateTimeField(
         input_formats=['%d/%m/%Y'],
+		label='Fecha',
         widget=forms.DateTimeInput(attrs={
             'class': 'form-control datetimepicker-input',
             'data-target': '#datetimepicker1',

@@ -11,8 +11,9 @@ from functools import partial
 from django.template import RequestContext
 from users.models import Profile
 from core.models import Minute, Isue
-from dashboard.models import Position, Player, Match, Training, Assistants
+from dashboard.models import Position, Player, Match, Training, Assistants, Measure, Record
 from dashboard.forms import PositionForm, PlayerForm, RecordForm, MatchForm, TrainingForm, MeasureForm, AssistanceForm
+from core.forms import MinuteForm
 from django.contrib import messages 
 from django.contrib.auth.models import Group
 
@@ -24,7 +25,7 @@ def socio(request):
     is_partner = request.user.groups.filter(name__in=['socio']).exists()
     is_player = request.user.groups.filter(name__in=['jugador']).exists()
     is_directive = request.user.groups.filter(name__in=['directiva']).exists()
-
+    is_coach   = request.user.groups.filter(name__in=['entrenador']).exists()  
     if is_directive: 
         return render(request, 'dashboard.html',context)
     if is_player:
@@ -36,6 +37,9 @@ def socio(request):
         minutes = Minute.objects.all()
         isues = Isue.objects.all()
         return render(request, 'dashboard2.html',{'minutes':minutes,'isues':isues})
+    if is_coach:
+        return render(request, 'dashboard2.html',)
+
 
 @csrf_protect       
 def load_content(request):
@@ -103,6 +107,42 @@ def mark_assistance(CreateView,request):
     def get_success_url(self):
         return reverse('dashboard:socio')
     return render_to_string("content/mark_assistance.html",{'form':form_class},request)
+def add_minute(CreateView,request):
+    template_name = "content/new_minute.html"
+    form_class = MinuteForm
+    def get_success_url(self):
+        return reverse('dashboard:socio')
+    return render_to_string("content/new_minute.html",{'form':form_class},request)
+def achievement(ids,request):
+    records = Record.objects.order_by('name')
+    
+    for record in records :
+
+    measure = []
+    labels = []
+    data = []
+
+    queryset = City.objects.order_by('-population')[:5]
+    for city in queryset:
+        labels.append(city.name)
+        data.append(city.population)
+
+    return render_to_string("content/pie_chart.html", {
+        'labels': labels,
+        'data': data,
+    })
+def vote(messaje,request):
+    action = messaje.split('/')[1]
+    ids = messaje.split('/')[0]
+    isue = Isue.objects.get(id=ids)
+    if not isue.votes.exists(request.user.id):
+        if action=="+": 
+            isue.votes.up(request.user.id)
+            return "Exito, ha votado a favor"
+        if action=="-":
+            isue.votes.down(request.user.id)
+            return "Exito, ha votado en contra"
+    return "ya ha votado en este punto"
 
 def type_of_request(messaje,request):
     action = ""
@@ -117,9 +157,12 @@ def type_of_request(messaje,request):
         'add_position':add_position,
         'add_player':add_player,
         'add_match':add_match,
+        'add_minute':add_minute,
         'add_training':add_training,
         'see_training':see_training,
         'mark_assistance':mark_assistance,
+        'vote':vote,
+        'achievement':achievement,
     }
     return switcher[action](ids,request)
 
@@ -201,4 +244,12 @@ def mark_assistance_ok(request):
                 return HttpResponse(simplejson.dumps('Exito, sus datatos fueron actualizados'))
         error_string = ' '.join([' '.join(x for x in l) for l in list(form.errors.values())])
         return HttpResponse(simplejson.dumps(error_string))
-    
+def add_minute_ok(request):
+    context = RequestContext(request)
+    if request.method == 'POST':
+        form = MinuteForm(request.POST)
+        if form.is_valid():
+            form.save(commit=True)
+            return HttpResponseRedirect(reverse('dashboard:socio'))
+    error_string = ' '.join([' '.join(x for x in l) for l in list(form.errors.values())])
+    return HttpResponse(simplejson.dumps(error_string))

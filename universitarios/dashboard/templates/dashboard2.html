@@ -61,6 +61,8 @@
                 <div class="menu-slider">
                     <div class="menu">
                         <ul>
+                            {% for group in  request.user.groups.all %}
+                            {%  if 'socio' == group.name %}
                             <li>
                                 <div class="menu-item">
                                     <a href="#" class="menu-anchor" data-menu="1">Perfil</a>
@@ -76,6 +78,10 @@
                                     <a href="#" class="menu-anchor" data-menu="2">Actas</a>
                                 </div>
                             </li>
+                            {% endif %}
+                            {% endfor %}
+                            {% for group in  request.user.groups.all %}
+                            {%  if 'jugador' == group.name %}
                             <li>
                                 <div class="menu-item">
                                     <a href="#" class="menu-anchor" data-menu="3">Entrenamientos</a>
@@ -87,13 +93,18 @@
                                     <a href="#" class="menu-anchor" data-menu="4">Mediciones</a>
                                 </div>
                             </li>
-                            <li>
-                                <div class="menu-item">
-                                    <a class="click" href="#" data-catid="add_training|0" id="addtraining">
-                                        Crear Entrenamiento
-                                    </a>
-                                </div>
-                            </li>
+                            {% endif %}
+                            {% endfor %}
+                            {% for group in  request.user.groups.all %}
+                            {%  if 'entrenador' == group.name %}
+                                <li>
+                                    <div class="menu-item">
+                                        <a class="click" href="#" data-catid="add_training|0" id="addtraining">
+                                            Crear Entrenamiento
+                                        </a>
+                                    </div>
+                                </li>
+                            
                             <li>
                                 <div class="menu-item">
                                     <a class="click" href="#" data-catid="add_match|0" id="addmatch">
@@ -115,11 +126,17 @@
                                     </a>
                                 </div>
                             </li>
+                            {% endif %}
+                            {% endfor %}
+                            {% for group in  request.user.groups.all %}
+                            {%  if 'directiva' == group.name %} 
                             <li>
                                 <div class="menu-item">
                                     <a href="#" class="menu-anchor" data-menu="5">Directiva</a>
                                 </div>
                             </li>
+                            {% endif %}
+                            {% endfor %} 
                         </ul>
                     </div>
                     <div class="submenu menu" data-menu="1">
@@ -221,7 +238,11 @@
                         </div>
                         <ul>
                             <li>
-                                <div class="menu-item"><a href="#">Crear Acta</a></div>
+                                <div class="menu-item">
+                                    <a class="click" href="#" data-catid="add_minute|0" id="addminute">
+                                        Crear Acta
+                                    </a>    
+                                </div>
                             </li>
                             <li>
                                 <div class="menu-item"><a href="#">Modificar Acta</a></div>

@@ -17,7 +17,7 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE,related_name='profile')
     avatar = models.ImageField(upload_to='profile_image/', null=True, blank=True)
     rut = models.CharField(max_length=30,)
-    phone = PhoneNumberField('Numero de telefono',)
+    phone = PhoneNumberField('Número de telefono',)
     birth_date = models.DateField('Fecha de nacimiento', )
     incorporation_date = models.DateTimeField(default=datetime.datetime.now)
     

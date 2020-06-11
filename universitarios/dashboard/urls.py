@@ -16,5 +16,6 @@ urlpatterns = [
     path('training/', views.add_training_ok, name='add_training_ok'),
     path('measure/', views.add_measure_ok, name='add_measure_ok'),
     path('Assistance/', views.mark_assistance_ok, name='mark_assistance_ok'),
+    path('Minute/', views.mark_assistance_ok, name='add_minute_ok'),
 
 ]

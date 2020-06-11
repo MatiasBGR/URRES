@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'mapbox_location_field',
     'bootstrap_datepicker_plus',
     'bootstrap3',
+    'vote',
 ]
 
 MIDDLEWARE = [
