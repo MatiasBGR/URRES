@@ -117,10 +117,9 @@ def achievement(ids,request):
     records = Record.objects.order_by('name')
     
     for record in records :
-
-    measure = []
-    labels = []
-    data = []
+        measure = []
+        labels = []
+        data = []
 
     queryset = City.objects.order_by('-population')[:5]
     for city in queryset:
